@@ -6,6 +6,8 @@ import { MarketPrices } from './MarketPrices'
 import { CropListings } from './CropListings'
 import { MarketTrends } from './MarketTrends'
 import { MarketRecommendations } from './MarketRecommendations'
+import { MarketAnalytics } from './MarketAnalytics'
+import { ListingManager } from './ListingManager'
 import { ServiceFactory } from '@/lib/services/factory'
 import { MarketPrice } from '@/lib/types'
 
@@ -15,7 +17,7 @@ interface MarketplaceDashboardProps {
 
 export function MarketplaceDashboard({ className = '' }: MarketplaceDashboardProps) {
   const { user } = useAuth()
-  const [activeTab, setActiveTab] = useState<'prices' | 'sell' | 'trends' | 'recommendations'>('prices')
+  const [activeTab, setActiveTab] = useState<'prices' | 'sell' | 'trends' | 'recommendations' | 'analytics' | 'listings'>('prices')
   const [marketPrices, setMarketPrices] = useState<MarketPrice[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -73,7 +75,9 @@ export function MarketplaceDashboard({ className = '' }: MarketplaceDashboardPro
     { key: 'prices', label: 'Market Prices', icon: '💰' },
     { key: 'sell', label: 'Sell Crops', icon: '🛒' },
     { key: 'trends', label: 'Price Trends', icon: '📈' },
-    { key: 'recommendations', label: 'Recommendations', icon: '💡' }
+    { key: 'recommendations', label: 'Recommendations', icon: '💡' },
+    { key: 'analytics', label: 'Analytics', icon: '📊' },
+    { key: 'listings', label: 'My Listings', icon: '📦' }
   ] as const
 
   return (
@@ -273,6 +277,14 @@ export function MarketplaceDashboard({ className = '' }: MarketplaceDashboardPro
 
         {activeTab === 'recommendations' && user && (
           <MarketRecommendations userId={user.id} />
+        )}
+
+        {activeTab === 'analytics' && (
+          <MarketAnalytics />
+        )}
+
+        {activeTab === 'listings' && user && (
+          <ListingManager />
         )}
       </div>
     </div>

@@ -1,14 +1,32 @@
 {
-  "name": "AgroClash - Gamified Agriculture Platform",
+  "name": "AgroClash - Smart Farming Platform",
   "short_name": "AgroClash",
-  "description": "A gamified agriculture platform for farmers to manage plots, track crops, and collaborate with others",
+  "description": "A gamified farming platform that helps farmers manage their crops, track weather, and connect with other farmers.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#10B981",
+  "theme_color": "#16a34a",
   "orientation": "portrait-primary",
-  "categories": ["agriculture", "productivity", "games"],
+  "scope": "/",
   "lang": "en",
+  "dir": "ltr",
+  "categories": ["agriculture", "productivity", "education"],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop-dashboard.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Farm Dashboard on Desktop"
+    },
+    {
+      "src": "/screenshots/mobile-dashboard.png", 
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Farm Dashboard on Mobile"
+    }
+  ],
   "icons": [
     {
       "src": "/icons/icon-72x72.png",
@@ -18,7 +36,7 @@
     },
     {
       "src": "/icons/icon-96x96.png",
-      "sizes": "96x96",
+      "sizes": "96x96", 
       "type": "image/png",
       "purpose": "maskable any"
     },
@@ -59,56 +77,75 @@
       "purpose": "maskable any"
     }
   ],
-  "screenshots": [
-    {
-      "src": "/screenshots/desktop-1.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide"
-    },
-    {
-      "src": "/screenshots/mobile-1.png",
-      "sizes": "390x844",
-      "type": "image/png",
-      "form_factor": "narrow"
-    }
-  ],
   "shortcuts": [
     {
-      "name": "Farm Dashboard",
+      "name": "Dashboard",
       "short_name": "Dashboard",
-      "description": "View your farm overview and quick stats",
+      "description": "View your farm dashboard",
       "url": "/dashboard",
       "icons": [
         {
-          "src": "/icons/dashboard-96x96.png",
+          "src": "/icons/shortcut-dashboard.png",
           "sizes": "96x96"
         }
       ]
     },
     {
-      "name": "Plot Manager",
-      "short_name": "Plots",
-      "description": "Manage your land plots and crops",
-      "url": "/plots",
+      "name": "Add Plot",
+      "short_name": "Add Plot",
+      "description": "Create a new farming plot",
+      "url": "/plots/new",
       "icons": [
         {
-          "src": "/icons/plots-96x96.png",
+          "src": "/icons/shortcut-plot.png",
           "sizes": "96x96"
         }
       ]
     },
     {
-      "name": "Weather Alerts",
+      "name": "Weather",
       "short_name": "Weather",
-      "description": "Check weather forecasts and alerts",
+      "description": "Check weather forecast",
       "url": "/weather",
       "icons": [
         {
-          "src": "/icons/weather-96x96.png",
+          "src": "/icons/shortcut-weather.png",
           "sizes": "96x96"
         }
       ]
+    },
+    {
+      "name": "Marketplace",
+      "short_name": "Market",
+      "description": "Buy and sell crops",
+      "url": "/marketplace",
+      "icons": [
+        {
+          "src": "/icons/shortcut-market.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.agroclash.app",
+      "id": "com.agroclash.app"
+    }
+  ],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "handle_links": "preferred",
+  "protocol_handlers": [
+    {
+      "protocol": "web+agroclash",
+      "url": "/handle?protocol=%s"
     }
   ]
 }
